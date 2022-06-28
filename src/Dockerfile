@@ -1,10 +1,12 @@
+
+
 FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install dependencies.
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+    && apt-get install -y --no-install-recommends \
     make \
     build-essential \
     libssl-dev \
@@ -23,25 +25,28 @@ RUN apt-get update \
     git \
     ca-certificates \
     libffi-dev \
-  && apt-get clean autoclean \
-  && apt-get autoremove -y \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -f /var/cache/apt/archives/*.deb
+    && apt-get clean autoclean \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -f /var/cache/apt/archives/*.deb
 
 # Install ``pyenv``.
 RUN git clone https://github.com/pyenv/pyenv /root/.pyenv
 
 # Install the desired versions of Python.
-RUN for PYTHON_VERSION in 3.8.12 3.9.7 3.10.0 pypy3.8-7.3.7; do \
-  set -ex \
+RUN for PYTHON_VERSION in 3.6.15 3.7.13 3.8.13 3.9.13 3.10.5 pypy3.8-7.3.7; do \
+    set -ex \
     && /root/.pyenv/bin/pyenv install ${PYTHON_VERSION} \
     && /root/.pyenv/versions/${PYTHON_VERSION}/bin/python -m pip install --upgrade pip \
-  ; done
+    && /root/.pyenv/versions/${PYTHON_VERSION}/bin/python -m pip install tox \
+    ; done
 
 # Add to PATH, in order of lowest precedence to highest.
 ENV PATH /root/.pyenv/versions/pypy3.8-7.3.7/bin:${PATH}
-ENV PATH /root/.pyenv/versions/3.8.12/bin:${PATH}
-ENV PATH /root/.pyenv/versions/3.9.7/bin:${PATH}
-ENV PATH /root/.pyenv/versions/3.10.0/bin:${PATH}
+ENV PATH /root/.pyenv/versions/3.6.15/bin:${PATH}
+ENV PATH /root/.pyenv/versions/3.7.13/bin:${PATH}
+ENV PATH /root/.pyenv/versions/3.8.13/bin:${PATH}
+ENV PATH /root/.pyenv/versions/3.9.13/bin:${PATH}
+ENV PATH /root/.pyenv/versions/3.10.5/bin:${PATH}
 
 CMD ["python3.10"]

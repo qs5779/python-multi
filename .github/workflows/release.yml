@@ -58,7 +58,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: ./src
           file: ./src/Dockerfile
-          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x
+          platforms: linux/386,linux/amd64,linux/arm32v7,linux/arm64,linux/ppc64le,linux/s390x,linux/riscv64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.prep.outputs.tags }}
           cache-from: type=gha

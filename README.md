@@ -9,7 +9,7 @@ The Dockerfile uses `pyenv` to install the included Python versions.
 
 The "Short Description" on Docker Hub should read:
 
-> Multiple Python versions installed into Ubuntu LTS (20.04 as of October 2021)
+> Multiple Python versions and tox installed into Ubuntu LTS 20.04
 
 This is provided here as a back-up (i.e. in case the short
 description is overwritten).
@@ -26,14 +26,14 @@ for those who don't use `docker` on a regular basis).
 ```
 $ docker build \
 >   --file src/Dockerfile \
->   --tag dhermes/python-multi:latest \
+>   --tag qs5779/python-multi:latest \
 >   .
 $ docker run \
 >   --rm \
 >   --tty \
 >   --interactive \
 >   --volume $(git rev-parse --show-toplevel):/var/code/ \
->   dhermes/python-multi:latest \
+>   qs5779/python-multi:latest \
 >   /bin/bash
 ```
 
@@ -48,4 +48,12 @@ $ docker image rm ${IMAGE_ID}
 $ docker image rm ${REPOSITORY}:${TAG}
 ```
 
-[1]: https://hub.docker.com/r/dhermes/python-multi/
+[1]: https://hub.docker.com/r/qs5779/python-multi/
+
+### Credits/Acknowlegement
+
+forked from https://github.com/jeverling/python-multi which was forked from
+https://github.com/dhermes/python-multi
+
+I create i needed tox and python3.10 which was provided by the jeverling fork.
+I created this fork as I'll hopefull keep the python versions update as new ones are released.

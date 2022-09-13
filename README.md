@@ -50,10 +50,11 @@ $ docker image rm ${REPOSITORY}:${TAG}
 
 [1]: https://hub.docker.com/r/qs5779/python-multi/
 
-### Credits/Acknowlegement
+## Credits/Acknowlegements
 
 forked from https://github.com/jeverling/python-multi which was forked from
 https://github.com/dhermes/python-multi
 
-I create i needed tox and python3.10 which was provided by the jeverling fork.
-I created this fork as I'll hopefull keep the python versions update as new ones are released.
+I needed tox and python3.10 which was provided by the jeverling fork.
+I created this fork as I'll hopefull keep the python versions updatef as new ones are released
+and I am using the oportunity to improve my knowlege of github actions.

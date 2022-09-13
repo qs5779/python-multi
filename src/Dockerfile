@@ -4,9 +4,11 @@ FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-LABEL author="Quien Sabe"
-LABEL contact="qs5779@mail.com"
-LABEL license="MIT"
+# https://github.com/opencontainers/image-spec/blob/main/annotations.md
+LABEL org.opencontainers.image.source="https://github.com/qs5779/python-multi"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.authors="Quien Sabe <qs5779@mail.com>"
+LABEL org.opencontainers.image.description="Multiple Python versions and tox installed into Ubuntu LTS 20.04"
 
 # Install dependencies.
 RUN apt-get update \

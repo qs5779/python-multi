@@ -8,6 +8,8 @@ on:
   push:
     tags:
       - "v*.*.*"
+    branches:
+      - "20220913"
 
 jobs:
   docker:
@@ -22,7 +24,7 @@ jobs:
         id: prep
         run: |
           DOCKER_IMAGE=qs5779/python-multi
-          VERSION=edge
+          VERSION=v1.0.1
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/v}
           fi

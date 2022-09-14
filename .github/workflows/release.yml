@@ -1,5 +1,5 @@
 ---
-name: Publish Releases to Hub
+name: Publish Releases to DockerHub
 
 # from https://github.com/metcalfc/docker-action-examples/blob/main/app/Dockerfile
 # When its time to do a release do a full cross platform build for all supported

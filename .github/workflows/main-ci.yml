@@ -26,6 +26,11 @@ jobs:
           echo ::set-output name=dockertags::${DOCKER_TAGS}
           echo ::set-output name=ghcrtags::${DOCKER_TAGS}
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: all
+
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2

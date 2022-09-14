@@ -40,7 +40,8 @@ RUN apt-get update \
 RUN git clone https://github.com/pyenv/pyenv /root/.pyenv
 
 # Install the desired versions of Python.
-RUN for PYTHON_VERSION in 3.6.15 3.7.14 3.8.14 3.9.14 3.10.7 pypy3.8-7.3.9; do \
+# RUN for PYTHON_VERSION in 3.6.15 3.7.14 3.8.14 3.9.14 3.10.7 pypy3.8-7.3.9; do \
+RUN for PYTHON_VERSION in 3.10.7; do \
     set -ex \
     && /root/.pyenv/bin/pyenv install ${PYTHON_VERSION} \
     && /root/.pyenv/versions/${PYTHON_VERSION}/bin/python -m pip install --upgrade pip \

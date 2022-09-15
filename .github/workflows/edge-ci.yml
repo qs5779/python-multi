@@ -24,7 +24,7 @@ jobs:
           DOCKER_TAGS=qs5779/python-multi:edge
           GHCR_TAGS=ghcr.io/$DOCKER_TAGS
           echo ::set-output name=dockertags::${DOCKER_TAGS}
-          echo ::set-output name=ghcrtags::${DOCKER_TAGS}
+          echo ::set-output name=ghcrtags::${GHCR_TAGS}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2

@@ -35,6 +35,11 @@ $ docker run \
 >   --volume $(git rev-parse --show-toplevel):/var/code/ \
 >   qs5779/python-multi:latest \
 >   /bin/bash
+
+# at the bash prompt you should be able to cd /var/code
+# and run you test, simplest command is:
+$ cd /var/code
+$ tox
 ```
 
 ### Generic

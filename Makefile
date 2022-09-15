@@ -1,5 +1,4 @@
-# VERSION := $(shell python setup.py --version)
-# # VERSION := $(shell echo 0.1.0)
+TAGS ?= qs5779/python-multi:edge
 
 .PHONY: vars
 vars:
@@ -31,5 +30,5 @@ test:
 		docker pull $$tag ; \
 		docker run --rm --tty \
   	--volume $(shell git rev-parse --show-toplevel):/var/code/ \
-  	$$tag  python --version ; tox --version ; \
+  	$$tag  python --version ; \
 	done

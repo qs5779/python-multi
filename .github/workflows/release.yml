@@ -18,15 +18,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # - name: Prepare
-      #   id: prep
-      #   run: |
-      #     G_EDGE_TAG=qs5779/python-multi:edge
-      #     DOCKER_TAGS="${DOCKER_IMAGE}:${GITHUB_REF_NAME},${DOCKER_IMAGE}:latest"
-      #     echo ::set-output name=dockertags::${DOCKER_TAGS}
-      #     GHCR_IMAGE=gchcr.io/qs5779/python-multi
-      #     GHCR_TAGS="${GHCR_IMAGE}:${GITHUB_REF_NAME},${GHCR_IMAGE}:latest"
-          # echo ::set-output name=ghcrtags::${GHCR_TAGS}
+      - name: Prepare
+        id: prep
+        run: |
+          DOCKER_TAG=qs5779/python-multi:${GITHUB_REF_NAME}
+          GHCR_TAG=gchcr.io/${DOCKER_TAG}
+          echo ::set-output name=dockertag::${DOCKER_TAG}
+          echo ::set-output name=ghcrtag::${GHCR_TAG}
 
       - name: Login to DockerHub
         if: github.event_name != 'pull_request'
@@ -54,8 +52,8 @@ jobs:
         with:
           src: ghcr.io/qs5779/python-multi:edge
           dst: |
-            ghcr.io/qs5779/python-multi:${GITHUB_REF_NAME}
+            ${{ steps.prep.outputs.ghcrtag }}
             ghcr.io/qs5779/python-multi:latest
-            qs5779/python-multi:${GITHUB_REF_NAME}
+            ${{ steps.prep.outputs.dockertag }}
             qs5779/python-multi:latest
 ...

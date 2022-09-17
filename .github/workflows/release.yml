@@ -22,7 +22,7 @@ jobs:
         id: prep
         run: |
           DOCKER_TAG=qs5779/python-multi:${GITHUB_REF_NAME}
-          GHCR_TAG=gchcr.io/${DOCKER_TAG}
+          GHCR_TAG=ghcr.io/${DOCKER_TAG}
           echo ::set-output name=dockertag::${DOCKER_TAG}
           echo ::set-output name=ghcrtag::${GHCR_TAG}
 

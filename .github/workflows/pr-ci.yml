@@ -1,5 +1,5 @@
 ---
-name: PR CI
+name: Pull Request CI
 
 # For all pushes to the main branch run the tests and push the image to the
 # GitHub registry under an edge tag so we can use it for the nightly
@@ -17,15 +17,15 @@ jobs:
       # GitHub Actions do not automatically checkout your projects. If you need the code
       # you need to check it out.
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Test
         id: docker_test
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: ./src
